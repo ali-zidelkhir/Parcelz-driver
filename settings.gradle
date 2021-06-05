@@ -1,0 +1,2 @@
+rootProject.name = "Parcelz_Driver"
+include ':app'
