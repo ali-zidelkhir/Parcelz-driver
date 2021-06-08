@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.parcelz_driver.AcceptRequest;
 import com.example.parcelz_driver.MainFrame;
 import com.example.parcelz_driver.OTP;
 import com.example.parcelz_driver.R;
@@ -52,7 +53,7 @@ public class myadapter extends FirebaseRecyclerAdapter<Model, myadapter.NoteHold
             public void onClick(View v) {
                 System.out.println("kkkkkkkkkkkkkkkkkkkk " + keyId);
                 Toast.makeText(holder.itemView.getContext(), keyId, Toast.LENGTH_SHORT).show();
-                Intent homeIntent = new Intent(v.getContext(), MainFrame.class);
+                Intent homeIntent = new Intent(v.getContext(), AcceptRequest.class);
                 //homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 //homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 v.getContext().startActivity(homeIntent);
