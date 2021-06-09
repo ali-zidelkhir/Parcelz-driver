@@ -1,9 +1,389 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AcceptRequest">
+    android:background="@color/app"
+    android:orientation="vertical"
+    tools:context=".AcceptRequest"
+    tools:viewBindingIgnore="true">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/stencil"
+        android:text="PARCELZ"
+        android:textAlignment="center"
+        android:textColor="@color/yellow"
+        android:textSize="45sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/border_layout"
+        android:gravity="fill_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/tajawal_bold"
+            android:text="Code"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/app"
+            android:textSize="30sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="0"
+            android:fontFamily="@font/tajawal_bold"
+            android:text="Title"
+            android:textAlignment="textStart"
+            android:textAllCaps="true"
+            android:textColor="@color/app"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="0"
+            android:fontFamily="@font/tajawal_bold"
+            android:text="dddddddddddddddddddddddd"
+            android:textAlignment="textStart"
+            android:textAllCaps="true"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="0"
+            android:fontFamily="@font/tajawal_bold"
+            android:text="Size "
+            android:textAlignment="textStart"
+            android:textAllCaps="true"
+            android:textColor="@color/app"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/dimension"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="0"
+            android:fontFamily="@font/tajawal_bold"
+            android:text="dddddddddddddddddddddddd"
+            android:textAlignment="textStart"
+            android:textAllCaps="true"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="0"
+            android:fontFamily="@font/tajawal_bold"
+            android:text="Pickup Address"
+            android:textAlignment="textStart"
+            android:textAllCaps="true"
+            android:textColor="@color/app"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/pickupAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="0"
+            android:fontFamily="@font/tajawal_bold"
+            android:text="dddddddddddddddddddddddd"
+            android:textAlignment="textStart"
+            android:textAllCaps="true"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="0"
+            android:fontFamily="@font/tajawal_bold"
+            android:text="Destination"
+            android:textAlignment="textStart"
+            android:textAllCaps="true"
+            android:textColor="@color/app"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/destinationAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="0"
+            android:fontFamily="@font/tajawal_bold"
+            android:text="dddddddddddddddddddddddd"
+            android:textAlignment="textStart"
+            android:textAllCaps="true"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="0"
+            android:fontFamily="@font/tajawal_bold"
+            android:text="Frangible"
+            android:textAlignment="textStart"
+            android:textAllCaps="true"
+            android:textColor="@color/app"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/Frangible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="0"
+            android:fontFamily="@font/tajawal_bold"
+            android:text="dddddddddddddddddddddddd"
+            android:textAlignment="textStart"
+            android:textAllCaps="true"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="0"
+            android:fontFamily="@font/tajawal_bold"
+            android:text="Delivery Mode"
+            android:textAlignment="textStart"
+            android:textAllCaps="true"
+            android:textColor="@color/app"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/DeliveryMode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="0"
+            android:fontFamily="@font/tajawal_bold"
+            android:text="dddddddddddddddddddddddd"
+            android:textAlignment="textStart"
+            android:textAllCaps="true"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="0"
+            android:fontFamily="@font/tajawal_bold"
+            android:text="Cash on"
+            android:textAlignment="textStart"
+            android:textAllCaps="true"
+            android:textColor="@color/app"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/CashOn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="0"
+            android:fontFamily="@font/tajawal_bold"
+            android:text="dddddddddddddddddddddddd"
+            android:textAlignment="textStart"
+            android:textAllCaps="true"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:background="#F6F2BC"
+            android:layout_weight="0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="0"
+                    android:fontFamily="@font/tajawal_bold"
+                    android:text="Max in"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="#478596"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/duration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="0"
+                    android:fontFamily="@font/stencil"
+                    android:text="3 days"
+                    android:textColor="@color/red"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="0"
+                    android:fontFamily="@font/tajawal_bold"
+                    android:text="Distance"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="#478596"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/distance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="0"
+                    android:fontFamily="@font/stencil"
+                    android:text="250 KM"
+                    android:textColor="@color/red"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="0"
+                    android:fontFamily="@font/tajawal_bold"
+                    android:text="Cost"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="#478596"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/cost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="0"
+                    android:textColor="@color/red"
+                    android:fontFamily="@font/stencil"
+                    android:text="3 days"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_frame1"
+            android:fontFamily="@font/tajawal_black"
+            android:onClick="Next"
+            android:text="Confirm"
+            android:textAllCaps="false"
+            android:textSize="30sp" />
+    </LinearLayout>
+
+</LinearLayout>
