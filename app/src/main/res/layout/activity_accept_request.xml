@@ -86,7 +86,7 @@
             android:textSize="15sp" />
 
         <TextView
-            android:id="@+id/dimension"
+            android:id="@+id/Dimension"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
@@ -116,7 +116,7 @@
             android:textSize="15sp" />
 
         <TextView
-            android:id="@+id/pickupAddress"
+            android:id="@+id/PickupAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
@@ -146,7 +146,7 @@
             android:textSize="15sp" />
 
         <TextView
-            android:id="@+id/destinationAddress"
+            android:id="@+id/DestinationAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
@@ -365,7 +365,7 @@
                     android:layout_weight="0"
                     android:textColor="@color/red"
                     android:fontFamily="@font/stencil"
-                    android:text="3 days"
+                    android:text="500 DA"
                     android:textAlignment="center"
                     android:textAllCaps="true"
                     android:textSize="20sp" />

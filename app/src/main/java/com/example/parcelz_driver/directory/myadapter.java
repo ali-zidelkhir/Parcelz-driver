@@ -13,12 +13,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.parcelz_driver.AcceptRequest;
+import com.example.parcelz_driver.DB.DB_SQLITE;
 import com.example.parcelz_driver.MainFrame;
 import com.example.parcelz_driver.OTP;
 import com.example.parcelz_driver.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.io.Serializable;
@@ -26,9 +32,45 @@ import java.util.ArrayList;
 
 public class myadapter extends FirebaseRecyclerAdapter<Model, myadapter.NoteHolder> {
     private AdapterView.OnItemClickListener listener;
-
+    DatabaseReference databaseReference;
+String code;
     Context context;
     ArrayList<Model> list;
+    DB_SQLITE db = new DB_SQLITE(context);
+
+    ///methode pour l'insert et l'update de la place du page
+    public void Work(String key) {
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Temp");
+        temp ModelA = new temp(
+                key
+        );
+        databaseReference.push().setValue(ModelA);
+        Query query = databaseReference.orderByKey().limitToLast(1);
+        query.addListenerForSingleValueEvent(new
+
+                                                     ValueEventListener() {
+                                                         @Override
+                                                         public void onDataChange(DataSnapshot dataSnapshot) {
+                                                             for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+                                                                 code = (childSnapshot.getKey());
+                                                             }
+                                                         }
+
+                                                         @Override
+                                                         public void onCancelled(DatabaseError databaseError) {
+                                                             throw databaseError.toException();
+                                                         }
+                                                     });
+        System.out.println("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH success="+key);
+        /*
+        try {
+            db.Delete("88");
+            System.out.println("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH ="+key);
+            boolean result = (boolean) db.insertData(88, key);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }*/
+    }
 
     public myadapter(@NonNull FirebaseRecyclerOptions<Model> options) {
         super(options);
@@ -54,16 +96,8 @@ public class myadapter extends FirebaseRecyclerAdapter<Model, myadapter.NoteHold
                 System.out.println("kkkkkkkkkkkkkkkkkkkk " + keyId);
                 Toast.makeText(holder.itemView.getContext(), keyId, Toast.LENGTH_SHORT).show();
                 Intent homeIntent = new Intent(v.getContext(), AcceptRequest.class);
-                //homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                //homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                Work(keyId);
                 v.getContext().startActivity(homeIntent);
-               // finish();
-                // check if item still exists
-               // Model clickedDataItem = new Model();
-                //Toast.makeText(holder.itemView.getContext(), "You clicked " + clickedDataItem.getTitle()
-                //        + " \nand this key: " + clickedDataItem.getKey(), Toast.LENGTH_SHORT).show();
-                //System.out.println("fdfdfd " + v.getId());
-                //System.out.println("fdfdfd " + holder.itemView.getId());
 
             }
         });
@@ -101,7 +135,7 @@ public class myadapter extends FirebaseRecyclerAdapter<Model, myadapter.NoteHold
 
                         Model clickedDataItem = new Model();
                         //Toast.makeText(itemView.getContext(), "You clicked " + clickedDataItem.getTitle()
-                          //          + " \nand this key: " + clickedDataItem.getKey(), Toast.LENGTH_SHORT).show();
+                        //          + " \nand this key: " + clickedDataItem.getKey(), Toast.LENGTH_SHORT).show();
 
                     }
 
