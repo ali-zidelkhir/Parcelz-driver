@@ -1,4 +1,4 @@
-package com.example.parcelz_driver.Models;
+package com.example.parcelz.Models;
 
 public class DetailsFrameA {
     String Title;
@@ -22,33 +22,11 @@ public class DetailsFrameA {
     String Estimated_time;
     String Estimated_price;
     String Driver_uid;
-
-    public DetailsFrameA() {
-    }
-
-    public DetailsFrameA(String title, String h, String w, String l, String type, String description, double latitude, double longitude, double latitude_destination, double longitude_destination, double total, String UID, String willaya, String baladia, String waiting, String frangible, String delivery_mode, String cash_on, String estimated_time, String estimated_price, String driver_uid) {
-        Title = title;
-        H = h;
-        W = w;
-        L = l;
-        Type = type;
-        Description = description;
-        Latitude = latitude;
-        Longitude = longitude;
-        Latitude_destination = latitude_destination;
-        Longitude_destination = longitude_destination;
-        this.total = total;
-        this.UID = UID;
-        Willaya = willaya;
-        Baladia = baladia;
-        Waiting = waiting;
-        Frangible = frangible;
-        Delivery_mode = delivery_mode;
-        Cash_on = cash_on;
-        Estimated_time = estimated_time;
-        Estimated_price = estimated_price;
-        Driver_uid = driver_uid;
-    }
+    double price;
+    double duration;
+    double distance;
+    String current_willaya;
+    String current_baladia;
 
     public String getTitle() {
         return Title;
@@ -216,5 +194,74 @@ public class DetailsFrameA {
 
     public void setDriver_uid(String driver_uid) {
         Driver_uid = driver_uid;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public double getDuration() {
+        return duration;
+    }
+
+    public void setDuration(double duration) {
+        this.duration = duration;
+    }
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
+
+    public String getCurrent_willaya() {
+        return current_willaya;
+    }
+
+    public void setCurrent_willaya(String current_willaya) {
+        this.current_willaya = current_willaya;
+    }
+
+    public String getCurrent_baladia() {
+        return current_baladia;
+    }
+
+    public void setCurrent_baladia(String current_baladia) {
+        this.current_baladia = current_baladia;
+    }
+
+    public DetailsFrameA(String title, String h, String w, String l, String type, String description, double latitude, double longitude, double latitude_destination, double longitude_destination, double total, String UID, String willaya, String baladia, String waiting, String frangible, String delivery_mode, String cash_on, String estimated_time, String estimated_price, String driver_uid, double price, double duration, double distance, String current_willaya, String current_baladia) {
+        Title = title;
+        H = h;
+        W = w;
+        L = l;
+        Type = type;
+        Description = description;
+        Latitude = latitude;
+        Longitude = longitude;
+        Latitude_destination = latitude_destination;
+        Longitude_destination = longitude_destination;
+        this.total = total;
+        this.UID = UID;
+        Willaya = willaya;
+        Baladia = baladia;
+        Waiting = waiting;
+        Frangible = frangible;
+        Delivery_mode = delivery_mode;
+        Cash_on = cash_on;
+        Estimated_time = estimated_time;
+        Estimated_price = estimated_price;
+        Driver_uid = driver_uid;
+        this.price = price;
+        this.duration = duration;
+        this.distance = distance;
+        this.current_willaya = current_willaya;
+        this.current_baladia = current_baladia;
     }
 }

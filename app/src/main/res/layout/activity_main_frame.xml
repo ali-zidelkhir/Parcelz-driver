@@ -21,15 +21,16 @@
         android:textOff="I am Out"
         android:textOn="I am Active" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+
+    <Button
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="151dp"
-        tools:layout_editor_absoluteY="392dp" />
-
-
+        android:layout_margin="20dp"
+        android:fontFamily="@font/tajawal_black"
+        android:onClick="My_Request"
+        android:text="My Requests"
+        android:textAllCaps="false"
+        android:textSize="30sp" />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_margin="20dp"

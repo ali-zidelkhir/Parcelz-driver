@@ -19,7 +19,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Parcelz_Driver">
-        <activity android:name=".GetMyPAth"></activity>
+        <activity android:name=".MyRequest"></activity>
+        <activity android:name=".GetMyPAth" />
         <activity android:name=".AcceptRequest" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

@@ -381,7 +381,7 @@
             android:background="@drawable/btn_frame1"
             android:fontFamily="@font/tajawal_black"
             android:onClick="Next"
-            android:text="Confirm"
+            android:text="Accept"
             android:textAllCaps="false"
             android:textSize="30sp" />
     </LinearLayout>

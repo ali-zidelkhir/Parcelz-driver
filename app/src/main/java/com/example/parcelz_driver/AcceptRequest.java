@@ -1,21 +1,23 @@
 package com.example.parcelz_driver;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.RadioButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.parcelz_driver.DB.DB_SQLITE;
-import com.example.parcelz_driver.Models.DetailsFrameA;
+import com.example.parcelz_driver.directory.MyRequest_Model;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,8 +25,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.shuhart.stepview.StepView;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,15 +79,15 @@ public class AcceptRequest extends AppCompatActivity {
         setContentView(R.layout.activity_accept_request);
 
         TitleET = findViewById(R.id.Title);
-        DimensionET = findViewById(R.id.Title);
-        PickupAddressET = findViewById(R.id.Title);
-        DestinationAddressET = findViewById(R.id.Title);
-        FrangibleET = findViewById(R.id.Title);
-        DeliveryModeET = findViewById(R.id.Title);
-        CashOnET = findViewById(R.id.Title);
-        durationET = findViewById(R.id.Title);
-        distanceET = findViewById(R.id.Title);
-        costET = findViewById(R.id.Title);
+        DimensionET = findViewById(R.id.Dimension);
+        PickupAddressET = findViewById(R.id.PickupAddress);
+        DestinationAddressET = findViewById(R.id.DestinationAddress);
+        FrangibleET = findViewById(R.id.Frangible);
+        DeliveryModeET = findViewById(R.id.DeliveryMode);
+        CashOnET = findViewById(R.id.CashOn);
+        durationET = findViewById(R.id.duration);
+        distanceET = findViewById(R.id.distance);
+        costET = findViewById(R.id.cost);
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Temp");
         Query query = databaseReference.orderByKey().limitToLast(1);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -96,6 +96,64 @@ public class AcceptRequest extends AppCompatActivity {
                 Key = getCode((Map<String, Object>) dataSnapshot.getValue());
                 //Key = String.valueOf(dataSnapshot.child("key").getValue());
                 System.out.println("le key inside is : " + Key.toString());
+
+                try {
+                    Thread.sleep(500);
+                    System.out.println("))))))))))))))))))))))))  " + Key);
+                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Send_Details_A");
+
+                    reference.orderByKey().equalTo(Key).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            for (DataSnapshot datas : dataSnapshot.getChildren()) {
+                                String title = datas.child("title").getValue(String.class);
+                                String willaya = datas.child("willaya").getValue(String.class);
+                                System.out.println(")))))))))))))))))))))))) :: " + title);
+                                System.out.println(")))))))))))))))))))))))) :: " + willaya);
+
+                                ////////
+                                String Title = datas.child("title").getValue(String.class);
+                                String H = datas.child("h").getValue(String.class);
+                                String W = datas.child("w").getValue(String.class);
+                                String L = datas.child("l").getValue(String.class);
+                                String pickupAddress = datas.child("current_willaya").getValue().toString() + ", "
+                                        + datas.child("current_baladia").getValue().toString();
+                                String Destination = datas.child("willaya").getValue(String.class)
+                                        + ", " + datas.child("baladia").getValue(String.class);
+                                String Frangible = datas.child("frangible").getValue(String.class);
+                                String DeliverMode = datas.child("delivery_mode").getValue(String.class);
+                                String CashOn = datas.child("cash_on").getValue(String.class);
+                                String days = datas.child("duration").getValue().toString();
+                                double distance = (double) datas.child("distance").getValue();
+                                double price = (double) datas.child("price").getValue();
+                                System.out.println(")))))))))))))))))))))))) :: " + H);
+                                System.out.println(")))))))))))))))))))))))) :: " + W);
+                                System.out.println(")))))))))))))))))))))))) :: " + L);
+                                System.out.println(")))))))))))))))))))))))) :: " + Destination);
+                                System.out.println(")))))))))))))))))))))))) :: " + Frangible);
+                                //// here i will fill my text fields
+                                TitleET.setText(Title.toString());
+                                DimensionET.setText(H + "cm x " + W + "cm x " + L + "cm x ");
+                                PickupAddressET.setText(pickupAddress);
+                                DestinationAddressET.setText(Destination.toString());
+                                FrangibleET.setText(Frangible.toString());
+                                DeliveryModeET.setText(DeliverMode.toString());
+                                CashOnET.setText(CashOn.toString());
+                                durationET.setText(days);
+                                distanceET.setText(String.format("%.2f", distance));
+                                costET.setText(String.format("%.2f", price));
+
+
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                        }
+                    });
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
@@ -103,97 +161,10 @@ public class AcceptRequest extends AppCompatActivity {
                 throw databaseError.toException();
             }
         });
-        try {
-            Thread.sleep(1000);
-            databaseReference2 = FirebaseDatabase.getInstance().getReference().child("Send_Details_A").child(Key);
-            Query querye = databaseReference2.orderByKey().limitToLast(1);
-            querye.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot1) {
-                    System.out.println("le key inside is : 2222 " + Key.toString());
-                       /* try {
-                            Object Title=dataSnapshot.child("title").getValue(String.class);
-                            Object H=dataSnapshot.child("h").getValue(String.class) ;
-                            Object W=dataSnapshot.child("w").getValue(String.class) ;
-                            Object L=dataSnapshot.child("l").getValue(String.class) ;
-                            //String pickupAddress=dataSnapshot.child("willaya").getValue().toString();
-                            Object Destination=dataSnapshot.child("willaya").getValue(String.class)
-                                    +", "+dataSnapshot.child("baladia").getValue(String.class) ;
-                            Object Frangible=dataSnapshot.child("frangible").getValue(String.class) ;
-                            Object DeliverMode=dataSnapshot.child("delivery_mode").getValue(String.class) ;
-                            Object CashOn=dataSnapshot.child("cash_on").getValue(String.class) ;
-                            //// here i will fill my text fields
-                            TitleET.setText(Title.toString());
-                            DimensionET.setText(H.toString()+"cm x "+W.toString()+"cm x "+L.toString()+"cm x ");
-                            //PickupAddressET .setText(Title);
-                            DestinationAddressET.setText(Destination.toString());
-                            FrangibleET .setText(Frangible.toString());
-                            DeliveryModeET .setText(DeliverMode.toString());
-                            CashOnET .setText(CashOn.toString());
-                            //durationET .setText(Title);
-                            //distanceET .setText(Title);
-                            //costET.setText(Title);
-                        }catch (Exception e){
-                            System.out.println(e.getMessage());
-                        }*/
-                    try {
-                        //DetailsFrameA user = dataSnapshot1.getValue(DetailsFrameA.class);
-                        //String Title = getData((Map<String, Object>) dataSnapshot1.getValue(),"title");
-                        String Title=dataSnapshot1.child("willaya").getValue( ).toString();
-                        //String Title = user.getTitle();
-                        System.out.println("Titlelellee:"+Title);
-                            /*String H = dataSnapshot.child("h").getValue(String.class);
-                            String W = dataSnapshot.child("w").getValue(String.class);
-                            String L = dataSnapshot.child("l").getValue(String.class);
-                            //String pickupAddress=dataSnapshot.child("willaya").getValue().toString();
-                            String Destination = dataSnapshot.child("willaya").getValue(String.class)
-                                    + ", " + dataSnapshot.child("baladia").getValue(String.class);
-                            String Frangible = dataSnapshot.child("frangible").getValue(String.class);
-                            String DeliverMode = dataSnapshot.child("delivery_mode").getValue(String.class);
-                            String CashOn = dataSnapshot.child("cash_on").getValue(String.class);*/
-                        //// here i will fill my text fields
-                        //TitleET.setText(Title.toString());
-                            /*DimensionET.setText(H.toString() + "cm x " + W.toString() + "cm x " + L.toString() + "cm x ");
-                            //PickupAddressET .setText(Title);
-                            DestinationAddressET.setText(Destination.toString());
-                            FrangibleET.setText(Frangible.toString());
-                            DeliveryModeET.setText(DeliverMode.toString());
-                            CashOnET.setText(CashOn.toString());*/
-                        //durationET .setText(Title);
-                        //distanceET .setText(Title);
-                        //costET.setText(Title);
-                    } catch (Exception e) {
-                        System.out.println(e.getMessage());
-                    }
-                }
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    throw databaseError.toException();
-                }
-            });
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
     }
 
-    private String getData(Map<String, Object> users, String Field) {
-
-        ArrayList<String> phoneNumbers = new ArrayList<>();
-
-        //iterate through each user, ignoring their UID
-        for (Map.Entry<String, Object> entry : users.entrySet()) {
-
-            //Get user map
-            Map singleUser = (Map) entry.getValue();
-            //Get phone field and append to list
-            phoneNumbers.add((String) singleUser.get(Field));
-        }
-        // Key = phoneNumbers.get(0).toString();
-        System.out.println(Field + " key inside " + phoneNumbers.toString());
-        return phoneNumbers.get(0).toString();
-    }
 
     private String getCode(Map<String, Object> users) {
 
@@ -226,5 +197,45 @@ public class AcceptRequest extends AppCompatActivity {
         }
 
         System.out.println("baladia " + phoneNumbers.toString());
+    }
+
+    String MyCode = "";
+
+    public void Next(View view) {
+
+        //create Model Data
+        MyRequest_Model ModelA = new MyRequest_Model(
+                "", ""
+        );
+
+        databaseReference.push().setValue(ModelA);
+        Query query = databaseReference.orderByKey().limitToLast(1);
+        query.addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+                            MyCode = childSnapshot.getKey();
+
+                            DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+                            FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
+                            rootRef.child("MyRequest")
+                                    .child(MyCode)
+                                    .child("driver_id")
+                                    .setValue(currentFirebaseUser.getUid() );
+                            rootRef.child("MyRequest")
+                                    .child(MyCode)
+                                    .child("request_id")
+                                    .setValue(Key);
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        throw databaseError.toException();
+                    }
+                });
+
     }
 }

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView.Adapter;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
@@ -104,7 +105,6 @@ public class MainFrame extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_frame);
-
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         database = FirebaseDatabase.getInstance().getReference("Send_Details_A");
         recyclerView.setHasFixedSize(true);
@@ -116,8 +116,6 @@ public class MainFrame extends AppCompatActivity {
                         .build();
         adapter = new myadapter(options);
         recyclerView.setAdapter(adapter);
-
-
 
 
         if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION)
@@ -248,4 +246,9 @@ public class MainFrame extends AppCompatActivity {
     }
 
 
+    public void My_Request(View view) {
+        Intent mainI = new Intent(MainFrame.this, MyRequest.class);
+       // mainI.putExtra("LATTDEST", Lat);
+        startActivity(mainI);
+    }
 }
